@@ -11,42 +11,38 @@
     padding: 0;
   }
 
-  /* MAIN WRAPPER WITH BACKGROUND */
-  .wrapper {
-    min-height: 200vh; /* enables scrolling */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* pushes content to bottom */
-
-    background-image: url("./PoerfolioHomePROTO.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  /* CONTAINER HOLDS IMAGE + BUTTONS */
+  .container {
+    position: relative;
+    width: 100%;
   }
 
-  /* BUTTON SECTION */
-  .button-section {
-    margin-bottom: 80px; /* space from bottom */
+  /* FULL IMAGE (NO CROPPING) */
+  .main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* BUTTON LAYER */
+  .buttons {
+    position: absolute;
+    bottom: 5%; /* adjust based on your design */
+    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
+    gap: 80px;
   }
 
-  /* BUTTON STYLE */
-  .nav-button {
-    padding: 14px 28px;
-    font-size: 16px;
-    background: rgba(0,0,0,0.75);
-    color: white;
-    border: 2px solid white;
+  /* IMAGE BUTTONS */
+  .img-btn {
+    width: 120px; /* adjust size */
     cursor: pointer;
-    transition: 0.25s;
+    transition: 0.2s;
   }
 
-  .nav-button:hover {
-    background: white;
-    color: black;
+  .img-btn:hover {
+    transform: scale(1.05);
   }
 
 </style>
@@ -54,13 +50,28 @@
 
 <body>
 
-<div class="wrapper">
+<div class="container">
 
-  <div class="button-section">
-    <button class="nav-button" onclick="window.location.href='drawings.html'">Drawings</button>
-    <button class="nav-button" onclick="window.location.href='photos.html'">Photos</button>
-    <button class="nav-button" onclick="window.location.href='about.html'">About</button>
-    <button class="nav-button" onclick="window.location.href='contact.html'">Contact</button>
+  <!-- FULL BACKGROUND IMAGE -->
+  <img src="PFHome.png" class="main-image">
+
+  <!-- CLICKABLE PNG BUTTONS -->
+  <div class="buttons">
+    <a href="drawings.html">
+      <img src="StickyNote.png" class="img-btn">
+    </a>
+
+    <a href="photos.html">
+      <img src="Poloroid.png" class="img-btn">
+    </a>
+
+    <a href="about.html">
+      <img src="PopUp.png" class="img-btn">
+    </a>
+
+    <a href="contact.html">
+      <img src="PopUp.png" class="img-btn">
+    </a>
   </div>
 
 </div>
