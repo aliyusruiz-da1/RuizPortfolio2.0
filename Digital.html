@@ -22,8 +22,13 @@ body {
 .section {
   padding: 180px 8%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 80px;
+
+  /* FORCE 3 COLUMNS */
+  grid-template-columns: repeat(3, 1fr);
+
+  /* SPACING BETWEEN BUTTONS */
+  gap: 140px; /* within your 100–200px target */
+
   justify-items: center;
 }
 
