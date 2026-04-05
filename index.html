@@ -9,6 +9,7 @@
   html, body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
   /* CONTAINER HOLDS IMAGE + BUTTONS */
@@ -24,25 +25,44 @@
     display: block;
   }
 
-  /* BUTTON LAYER */
-  .buttons {
+  /* BUTTONS ABSOLUTE POSITIONING */
+  .button {
     position: absolute;
-    bottom: 5%; /* adjust based on your design */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-  }
-
-  /* IMAGE BUTTONS */
-  .img-btn {
-    width: 120px; /* adjust size */
     cursor: pointer;
-    transition: 0.2s;
+    transition: transform 0.2s;
   }
 
-  .img-btn:hover {
+  .button:hover {
     transform: scale(1.05);
+  }
+
+  /* SPECIFIC BUTTON POSITIONS */
+  .btn-sticky {
+    bottom: 120px; /* distance from bottom */
+    left: 20%;     /* adjust horizontally to match sticky note */
+    width: 120px;
+  }
+
+  .btn-polaroid {
+    bottom: 110px;
+    left: 45%;     /* center-ish for polaroid */
+    width: 120px;
+  }
+
+  .btn-popup {
+    bottom: 130px;
+    left: 70%;     /* adjust to match popup */
+    width: 120px;
+  }
+
+  /* Bottom-right black button (blends with black triangle) */
+  .btn-black {
+    bottom: 0;
+    right: 0;
+    width: 100px;  /* adjust size to cover triangle */
+    height: 100px;
+    background-color: black;
+    border: none;
   }
 
 </style>
@@ -52,27 +72,26 @@
 
 <div class="container">
 
-  <!-- FULL BACKGROUND IMAGE -->
+  <!-- FULL IMAGE -->
   <img src="PFHome.png" class="main-image">
 
-  <!-- CLICKABLE PNG BUTTONS -->
-  <div class="buttons">
-    <a href="drawings.html">
-      <img src="StickyNote.png" class="img-btn">
-    </a>
+  <!-- BUTTONS MAPPED TO IMAGE AREAS -->
+  <a href="drawings.html">
+    <img src="StickyNote.png" class="button btn-sticky">
+  </a>
 
-    <a href="photos.html">
-      <img src="Poloroid.png" class="img-btn">
-    </a>
+  <a href="photos.html">
+    <img src="Poloroid.png" class="button btn-polaroid">
+  </a>
 
-    <a href="about.html">
-      <img src="PopUp.png" class="img-btn">
-    </a>
+  <a href="about.html">
+    <img src="PopUp.png" class="button btn-popup">
+  </a>
 
-    <a href="Secret.html">
-      <img src="PopUp.png" class="img-btn">
-    </a>
-  </div>
+  <!-- Bottom-right invisible black button -->
+  <a href="contact.html">
+    <div class="button btn-black"></div>
+  </a>
 
 </div>
 
