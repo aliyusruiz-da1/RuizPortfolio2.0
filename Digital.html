@@ -15,21 +15,22 @@ body {
   background-position: top center;
   background-repeat: no-repeat;
 
-  min-height: 200vh; /* scroll */
+  min-height: 200vh;
 }
 
-/* GRID LAYOUT */
+/* GRID LAYOUT (EVEN + RESPONSIVE) */
 .section {
-  padding: 250px 5%;
+  padding: 180px 8%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 60px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 80px;
   justify-items: center;
 }
 
-/* BUTTON IMAGES */
+/* BUTTON SIZE (FIXED ISSUE: was 800px) */
 .btn-img {
-  width: 800px;
+  width: 220px; /* balanced size */
+  max-width: 25vw;
   cursor: pointer;
   transition: 0.25s;
 }
@@ -38,31 +39,38 @@ body {
   transform: scale(1.05);
 }
 
-/* OVERLAY BASE */
+/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-/* POPUP CONTENT */
+/* POPUP */
 .popup {
   position: relative;
-  max-width: 80%;
-  max-height: 80%;
+  width: auto;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* TYPE 1 IMAGE FIX (IMPORTANT) */
 .popup img {
-  width: 100%;
+  max-width: 90vw;
+  max-height: 70vh; /* prevents overflow */
+  width: auto;
   height: auto;
-  display: block;
+  object-fit: contain;
 }
 
 /* TEXTBOX */
@@ -70,6 +78,8 @@ body {
   background: white;
   padding: 15px;
   margin-top: 10px;
+  max-width: 600px;
+  text-align: center;
 }
 
 /* CLOSE BUTTON */
@@ -89,26 +99,34 @@ body {
 
 /* VIDEO */
 iframe {
-  width: 1200px;
-  height: 675px;
-  max-width: 90vw;
+  width: 80vw;
+  max-width: 1000px;
+  height: 45vw;
+  max-height: 560px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- TYPE 1 (POPUPS) -->
+<!-- TYPE 1 -->
 <div class="section">
 
-<img src="GrugEditPF.png" class="btn-img" onclick="openPopup('GrugEditPF.png','Cave.Glitch: an image of Grug from The Croods I photoshoped to look glitchy.')">
-<img src="LOGOpf.png" class="btn-img" onclick="openPopup('LOGOpf.png','Rotton Tomatos: A logo I made in illustrator for a company I made up that would make clothes out of discarded food fibers.')">
-<img src="LiberalPF.png" class="btn-img" onclick="openPopup('LiberalPF.png','Liberal Obliteration: A political statement about how the government is such a mess its comparable to a Mr. Beast YT thumbnail, made in photoshop.')">
-<img src="MushroomPF.png" class="btn-img" onclick="openPopup('MushroomPF.png','P5 Mushroom: A little fungi made with a P5 base and edited in photoshop.')">
+<img src="GrugEditPF.png" class="btn-img"
+onclick="openPopup('GrugEditPU.png','Cave.Glitch: an image of Grug from The Croods I photoshoped to look glitchy.')">
+
+<img src="LOGOpf.png" class="btn-img"
+onclick="openPopup('LOGOPU.png','Rotton Tomatos: A logo I made in illustrator for a company I made up that would make clothes out of discarded food fibers.')">
+
+<img src="LiberalPF.png" class="btn-img"
+onclick="openPopup('lible 2PU.png','Liberal Obliteration: A political statement about how the government is such a mess its comparable to a Mr. Beast YT thumbnail, made in photoshop.')">
+
+<img src="MushroomPF.png" class="btn-img"
+onclick="openPopup('MushroomPU.png','P5 Mushroom: A little fungi made with a P5 base and edited in photoshop.')">
 
 </div>
 
-<!-- TYPE 2 (HOVER + LINKS) -->
+<!-- TYPE 2 -->
 <div class="section">
 
 <a href="https://aliyusruiz-da1.github.io/Amazon/index.html">
@@ -137,25 +155,28 @@ iframe {
 
 </div>
 
-<!-- TYPE 3 (VIDEO POPUPS) -->
+<!-- TYPE 3 -->
 <div class="section">
 
-<img src="dyrPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/DAGRe1uQGW4')">
-<img src="habitPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/Erg8p-mT1mk')">
-<img src="RedPaintPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/5wxtijg_jsk')">
+<img src="dyrPF.png" class="btn-img"
+onclick="openVideo('https://www.youtube.com/embed/DAGRe1uQGW4')">
+
+<img src="habitPF.png" class="btn-img"
+onclick="openVideo('https://www.youtube.com/embed/Erg8p-mT1mk')">
+
+<img src="RedPaintPF.png" class="btn-img"
+onclick="openVideo('https://www.youtube.com/embed/5wxtijg_jsk')">
 
 </div>
 
 <!-- OVERLAY -->
 <div class="overlay" id="overlay">
-  <div class="popup" id="popupContent">
-    <div class="close" onclick="closeOverlay()">X</div>
-  </div>
+  <div class="popup" id="popupContent"></div>
 </div>
 
 <script>
 
-/* IMAGE POPUP */
+/* TYPE 1 POPUP */
 function openPopup(img, text) {
   const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popupContent");
@@ -169,7 +190,7 @@ function openPopup(img, text) {
   overlay.style.display = "flex";
 }
 
-/* VIDEO POPUP */
+/* VIDEO */
 function openVideo(link) {
   const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popupContent");
