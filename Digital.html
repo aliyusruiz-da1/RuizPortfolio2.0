@@ -29,10 +29,14 @@ body {
 
 /* BUTTON SIZE (FIXED ISSUE: was 800px) */
 .btn-img {
-  width: 220px; /* balanced size */
-  max-width: 25vw;
+  width: 260px;          /* was 220px → ~20% bigger */
+  max-width: 30vw;       /* slightly larger on big screens */
   cursor: pointer;
   transition: 0.25s;
+}
+
+.btn-img:hover {
+  transform: scale(1.08); /* slightly stronger hover to match size */
 }
 
 .btn-img:hover {
