@@ -6,41 +6,42 @@
 <title>Portfolio Home</title>
 
 <style>
-  /* RESET */
-  body {
+  html, body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+  }
 
-    /* BACKGROUND IMAGE (MOST RELIABLE METHOD) */
-    background-image: url("PortfolioHomePROTO.png");
+  /* MAIN WRAPPER WITH BACKGROUND */
+  .wrapper {
+    min-height: 200vh; /* enables scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* pushes content to bottom */
+
+    background-image: url("./PortfolioHomePROTO.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-<img src="PortfolioHomePROTO.png" style="width:300px;">
-    /* ENABLE SCROLL */
-    min-height: 200vh;
   }
 
-  /* BUTTON CONTAINER */
-  .button-container {
-    position: absolute;
-    bottom: 100px; /* distance from bottom */
-    width: 100%;
+  /* BUTTON SECTION */
+  .button-section {
+    margin-bottom: 80px; /* space from bottom */
     display: flex;
     justify-content: center;
-    gap: 80px; /* spacing between buttons */
+    gap: 60px;
+    flex-wrap: wrap;
   }
 
   /* BUTTON STYLE */
   .nav-button {
-    padding: 15px 30px;
+    padding: 14px 28px;
     font-size: 16px;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0,0,0,0.75);
     color: white;
     border: 2px solid white;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.25s;
   }
 
   .nav-button:hover {
@@ -53,12 +54,15 @@
 
 <body>
 
-<!-- BUTTONS -->
-<div class="button-container">
-  <button class="nav-button" onclick="location.href='drawings.html'">Drawings</button>
-  <button class="nav-button" onclick="location.href='photos.html'">Photos</button>
-  <button class="nav-button" onclick="location.href='about.html'">About</button>
-  <button class="nav-button" onclick="location.href='contact.html'">Contact</button>
+<div class="wrapper">
+
+  <div class="button-section">
+    <button class="nav-button" onclick="window.location.href='drawings.html'">Drawings</button>
+    <button class="nav-button" onclick="window.location.href='photos.html'">Photos</button>
+    <button class="nav-button" onclick="window.location.href='about.html'">About</button>
+    <button class="nav-button" onclick="window.location.href='contact.html'">Contact</button>
+  </div>
+
 </div>
 
 </body>
