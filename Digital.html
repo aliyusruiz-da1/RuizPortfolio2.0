@@ -1,1 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Art</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: url("WebPF.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  min-height: 200vh; /* scroll */
+}
+
+/* GRID LAYOUT */
+.section {
+  padding: 100px 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 60px;
+  justify-items: center;
+}
+
+/* BUTTON IMAGES */
+.btn-img {
+  width: 200px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-img:hover {
+  transform: scale(1.05);
+}
+
+/* OVERLAY BASE */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* POPUP CONTENT */
+.popup {
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.popup img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TEXTBOX */
+.textbox {
+  background: white;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: red;
+  color: black;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+/* VIDEO */
+iframe {
+  width: 800px;
+  height: 450px;
+  max-width: 90vw;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TYPE 1 (POPUPS) -->
+<div class="section">
+
+<img src="GrugEditPF.png" class="btn-img" onclick="openPopup('GrugEditPF.png','Grug edit description')">
+<img src="LOGOpf.png" class="btn-img" onclick="openPopup('LOGOpf.png','Logo description')">
+<img src="LiberalPF.png" class="btn-img" onclick="openPopup('LiberalPF.png','Liberal piece description')">
+<img src="MushroomPF.png" class="btn-img" onclick="openPopup('MushroomPF.png','Mushroom piece description')">
+
+</div>
+
+<!-- TYPE 2 (HOVER + LINKS) -->
+<div class="section">
+
+<a href="https://aliyusruiz-da1.github.io/Amazon/index.html">
+  <img src="AZpf.png" class="btn-img"
+  onmouseover="this.src='AZpf2.png'"
+  onmouseout="this.src='AZpf.png'">
+</a>
+
+<a href="https://newart.city/show/demo-1-space-1">
+  <img src="ArtCityPF1.png" class="btn-img"
+  onmouseover="this.src='ArtCityPF2.png'"
+  onmouseout="this.src='ArtCityPF1.png'">
+</a>
+
+<a href="https://aliyusruiz-da1.github.io/DatingSim/">
+  <img src="DatePF.png" class="btn-img"
+  onmouseover="this.src='DatePF2.png'"
+  onmouseout="this.src='DatePF.png'">
+</a>
+
+<a href="https://aliyusruiz-da1.github.io/TheGame/">
+  <img src="SurfPF1.png" class="btn-img"
+  onmouseover="this.src='SurfPF2.png'"
+  onmouseout="this.src='SurfPF1.png'">
+</a>
+
+</div>
+
+<!-- TYPE 3 (VIDEO POPUPS) -->
+<div class="section">
+
+<img src="dyrPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/DAGRe1uQGW4')">
+<img src="habitPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/Erg8p-mT1mk')">
+<img src="RedPaintPF.png" class="btn-img" onclick="openVideo('https://www.youtube.com/embed/5wxtijg_jsk')">
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="popup" id="popupContent">
+    <div class="close" onclick="closeOverlay()">X</div>
+  </div>
+</div>
+
+<script>
+
+/* IMAGE POPUP */
+function openPopup(img, text) {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popupContent");
+
+  popup.innerHTML = `
+    <div class="close" onclick="closeOverlay()">X</div>
+    <img src="${img}">
+    <div class="textbox">${text}</div>
+  `;
+
+  overlay.style.display = "flex";
+}
+
+/* VIDEO POPUP */
+function openVideo(link) {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popupContent");
+
+  popup.innerHTML = `
+    <div class="close" onclick="closeOverlay()">X</div>
+    <iframe src="${link}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  `;
+
+  overlay.style.display = "flex";
+}
+
+/* CLOSE */
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
