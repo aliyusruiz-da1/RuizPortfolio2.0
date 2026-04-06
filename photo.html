@@ -1,1 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Gallery</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: url("YOURBACKGROUND.png"); /* replace with your uploaded file name */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 200vh;
+}
+
+/* ROW LAYOUT */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  margin: 150px 0;
+  flex-wrap: wrap;
+}
+
+/* BUTTON SIZE */
+.btn-img {
+  width: 450px;
+  max-width: 30vw;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-img:hover {
+  transform: scale(1.08);
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* POPUP */
+.popup {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup img {
+  max-width: 90vw;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* TEXTBOX */
+.textbox {
+  background: white;
+  padding: 15px;
+  margin-top: 10px;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: red;
+  color: black;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ROW 1 (CENTERED SINGLE) -->
+<div class="row">
+  <img src="Needle.png" class="btn-img"
+  onclick="openPopup('NeedlePU.png','Needle: description here.')">
+</div>
+
+<!-- ROW 2 -->
+<div class="row">
+
+  <img src="Drank.png" class="btn-img"
+  onclick="openPopup('DrankPU.png','Drank: description here.')">
+
+  <img src="CIG.png" class="btn-img"
+  onclick="openPopup('CIGPU.png','CIG: description here.')">
+
+  <img src="Nitro.png" class="btn-img"
+  onclick="openPopup('NitroPU.png','Nitro: description here.')">
+
+</div>
+
+<!-- ROW 3 -->
+<div class="row">
+
+  <img src="Corner.png" class="btn-img"
+  onclick="openPopup('CornerPU.png','Corner: description here.')">
+
+  <img src="Cart.png" class="btn-img"
+  onclick="openPopup('CartPU.png','Cart: description here.')">
+
+  <img src="Belong.png" class="btn-img"
+  onclick="openPopup('BelongPU.png','Belong: description here.')">
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="popup" id="popupContent"></div>
+</div>
+
+<script>
+
+/* POPUP FUNCTION */
+function openPopup(img, text) {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popupContent");
+
+  popup.innerHTML = `
+    <div class="close" onclick="closeOverlay()">X</div>
+    <img src="${img}">
+    <div class="textbox">${text}</div>
+  `;
+
+  overlay.style.display = "flex";
+}
+
+/* CLOSE */
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
