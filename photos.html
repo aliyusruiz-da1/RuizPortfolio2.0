@@ -10,12 +10,51 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
 
-  background: url("PhotoBG.png"); /* replace with your uploaded file name */
+  background: url("PhotoBG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   min-height: 200vh;
+}
+
+/* 🔷 TOP BANNER */
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 1500;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ❌ HOME BUTTON */
+.home-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 2000;
+  cursor: pointer;
+}
+
+.home-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  
+}
+
+/* PUSH CONTENT BELOW BANNER */
+.content {
+  padding-top: 140px;
 }
 
 /* ROW LAYOUT */
@@ -97,7 +136,19 @@ body {
 
 <body>
 
-<!-- ROW 1 (CENTERED SINGLE) -->
+<!-- 🔷 BANNER -->
+<div class="banner">
+  <img src="Film.png">
+</div>
+
+<!-- ❌ HOME BUTTON -->
+<a href="index.html" class="home-btn">
+  <img src="HomeB.png">
+</a>
+
+<div class="content">
+
+<!-- ROW 1 -->
 <div class="row">
   <img src="Needle.png" class="btn-img"
   onclick="openPopup('NeedlePU.png','Needle: description here.')">
@@ -128,6 +179,8 @@ body {
 
   <img src="Belong.png" class="btn-img"
   onclick="openPopup('BelongPU.png','Belong: description here.')">
+
+</div>
 
 </div>
 
