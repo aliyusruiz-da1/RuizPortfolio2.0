@@ -38,10 +38,10 @@ body {
   object-fit: contain;
 }
 
-/* CONTENT */
+/* ✅ CONTENT (PUSHED DOWN EXTRA 100px) */
 .content {
   position: relative;
-  padding-top: 60px;
+  padding-top: 160px; /* was 60px → now +100px */
 }
 
 /* ROW LAYOUT */
@@ -49,7 +49,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 120px;
-  margin: 150px 0;
+  margin: 180px 0; /* was 150px → slightly increased spacing */
   flex-wrap: wrap;
 }
 
