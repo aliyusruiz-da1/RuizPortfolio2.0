@@ -1,1 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Gallery</title>
 
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  background: url("DrawingBG.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 200vh;
+}
+
+
+/* ❌ HOME BUTTON (still fixed) */
+.home-btn {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 500; /* LOWER than overlay */
+  cursor: pointer;
+}
+
+.home-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* CONTENT SPACING */
+.content {
+  padding-top: 40px;
+}
+
+/* ROW LAYOUT */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  margin: 150px 0;
+  flex-wrap: wrap;
+}
+
+/* BUTTON SIZE */
+.btn-img {
+  width: 450px;
+  max-width: 30vw;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-img:hover {
+  transform: scale(1.08);
+}
+
+/* OVERLAY (NOW ALWAYS ON TOP) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* VERY HIGH → covers banner + button */
+}
+
+/* POPUP */
+.popup {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup img {
+  max-width: 90vw;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+/* TEXTBOX */
+.textbox {
+  background: white;
+  padding: 15px;
+  margin-top: 10px;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* CLOSE BUTTON */
+.close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: red;
+  color: black;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔷 BANNER -->
+<div class="banner">
+  <img src="Film.png">
+</div>
+
+<!-- ❌ HOME BUTTON -->
+<a href="index.html" class="home-btn">
+  <img src="HomeB.png">
+</a>
+
+<div class="content">
+
+<!-- ROW 1 -->
+<div class="row">
+  <img src="Missing.png" class="btn-img"
+  onclick="openPopup('MissingPU.png','Missing Person: A charcoal rubbing and pencil collage portraying an AI camera failing to identify a person')">
+</div>
+
+<!-- ROW 2 -->
+<div class="row">
+
+  <img src="Impact.png" class="btn-img"
+  onclick="openPopup('ImpactPU.png','Impact and Adoption: a marker piece dedicated to the impact of those around me and those around them, all influenced and perfectly fitting together.')">
+
+  <img src="Star.png" class="btn-img"
+  onclick="openPopup('StarPU.png','Star-Child: A construction paper and paint marker collage to show how the joy of a person can even illuminate the darkest reaches of space.')">
+
+  <img src="Mountain1.png" class="btn-img"
+  onclick="openPopup('MountainPU.png','Mountain Living: A charcoal piece that depicts the wonderful landscape of a mountain.')">
+
+</div>
+
+<!-- ROW 3 -->
+<div class="row">
+
+  <img src="Still.png" class="btn-img"
+  onclick="openPopup('StillPU.png','Still Life: A paper and charcoal pencil still life to demonstrate my skills of shading and keen eyes for proportion.')">
+
+</div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+  <div class="popup" id="popupContent"></div>
+</div>
+
+<script>
+
+/* POPUP FUNCTION */
+function openPopup(img, text) {
+  const overlay = document.getElementById("overlay");
+  const popup = document.getElementById("popupContent");
+
+  popup.innerHTML = `
+    <div class="close" onclick="closeOverlay()">X</div>
+    <img src="${img}">
+    <div class="textbox">${text}</div>
+  `;
+
+  overlay.style.display = "flex";
+}
+
+/* CLOSE */
+function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
