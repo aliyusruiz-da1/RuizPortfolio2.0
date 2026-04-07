@@ -9,24 +9,26 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-
-  background: url("DrawingBG.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  min-height: 200vh;
 }
 
+/* ✅ BACKGROUND IMAGE (FULL, SCROLLABLE, NOT CUT) */
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
 
-/* ❌ HOME BUTTON (still fixed) */
+/* ❌ HOME BUTTON */
 .home-btn {
   position: fixed;
   top: 15px;
   right: 20px;
   width: 60px;
   height: 60px;
-  z-index: 500; /* LOWER than overlay */
+  z-index: 500;
   cursor: pointer;
 }
 
@@ -36,9 +38,10 @@ body {
   object-fit: contain;
 }
 
-/* CONTENT SPACING */
+/* CONTENT */
 .content {
-  padding-top: 40px;
+  position: relative;
+  padding-top: 60px;
 }
 
 /* ROW LAYOUT */
@@ -62,7 +65,7 @@ body {
   transform: scale(1.08);
 }
 
-/* OVERLAY (NOW ALWAYS ON TOP) */
+/* OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
@@ -73,7 +76,7 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* VERY HIGH → covers banner + button */
+  z-index: 9999;
 }
 
 /* POPUP */
@@ -120,7 +123,8 @@ body {
 
 <body>
 
-
+<!-- ✅ FULL BACKGROUND IMAGE -->
+<img src="DrawingBG.png" class="bg">
 
 <!-- ❌ HOME BUTTON -->
 <a href="index.html" class="home-btn">
@@ -166,7 +170,6 @@ body {
 
 <script>
 
-/* POPUP FUNCTION */
 function openPopup(img, text) {
   const overlay = document.getElementById("overlay");
   const popup = document.getElementById("popupContent");
@@ -180,7 +183,6 @@ function openPopup(img, text) {
   overlay.style.display = "flex";
 }
 
-/* CLOSE */
 function closeOverlay() {
   document.getElementById("overlay").style.display = "none";
 }
